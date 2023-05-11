@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  mariadb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: Password123!
+      MYSQL_DATABASE: controlpi
+      MYSQL_USER: controlpi
+      MYSQL_PASSWORD: controlpi
+    volumes:
+      - ./.data:/var/lib/mysql
+    ports:
+      - "33060:3306"
+volumes:
+  mariadb:
+    driver: local

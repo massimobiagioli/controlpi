@@ -1,0 +1,9 @@
+# IDE
+.idea/
+.vscode/
+
+# Virtual Environment
+.venv/
+
+# Docker
+.data/
