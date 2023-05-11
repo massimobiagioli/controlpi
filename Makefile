@@ -1,4 +1,4 @@
-.PHONY: up down logs status start isort black bandit code-quality help
+.PHONY: up down logs status start isort black bandit flake8 code-quality help
 .DEFAULT_GOAL := help
 run-docker-compose = docker compose -f docker-compose.yml
 run-uvicorn = uvicorn
@@ -24,7 +24,10 @@ isort: # Run isort
 bandit: # Run bandit
 	bandit -r ./**/*.py
 
-code-quality: isort black bandit # Run code quality tools
+flake8: # Run flake8
+	flake8 ./controlpi ./tests
+
+code-quality: isort black bandit flake8 # Run code quality tools
 
 black : # Run black
 	black .
