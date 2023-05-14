@@ -1,4 +1,4 @@
-.PHONY: up down logs status start isort black bandit flake8 safety code-quality pre-commit-install help
+.PHONY: up down logs status install start isort black bandit flake8 safety code-quality pre-commit-install help
 .DEFAULT_GOAL := help
 run-docker-compose = docker compose -f docker-compose.yml
 run-uvicorn = uvicorn
@@ -17,6 +17,9 @@ logs: # Tail container logs
 
 status: # Show status of all containers
 	$(run-docker-compose) ps
+
+install: # Install dependencies
+	$(run-poetry) install
 
 start: # Start server
 	$(run-uvicorn) controlpi.app:app --reload
